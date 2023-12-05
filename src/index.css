@@ -113,11 +113,18 @@ button:focus-visible {
 @import 'tailwindcss/utilities';
 @import 'tailwindcss/components'; */
 
-@tailwindcss base;
-@tailwindcss utilities;
-@tailwindcss components;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
+* {
+  box-sizing: border-box;
   @apply m-0 p-0;
+}
+body{
+
   background-color: #ffecdb;
 }
+/* .navbar {
+  @apply ;
+} */

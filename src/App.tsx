@@ -3,16 +3,18 @@
 // import viteLogo from '/vite.svg'
 import "./index.css";
 import BG from "./components/BG";
+import Navbar from "./components/Navbar";
+import Lead from "./components/Lead";
 
 function App() {
   // const [count, setCount] = useState(0)
   return (
     <>
-    <BG />
+      <Navbar />
+      <BG />
+      <Lead />
+      
     </>
-    // <h1 className="text-3xl font-bold underline text-red-500 text-center">
-    //   Hello world!
-    // </h1>
   );
 }
 
