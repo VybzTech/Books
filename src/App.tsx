@@ -1,19 +1,22 @@
-// import { useState } from 'react'
+import { useState } from "react";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import "./index.css";
 import BG from "./components/BG";
 import Navbar from "./components/Navbar";
 import Lead from "./components/Lead";
+import BooksContext from "./BooksContext";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [books, setBooks] = useState([]);
   return (
     <>
       <Navbar />
       <BG />
-      <Lead />
-      
+
+      <BooksContext.Provider value={[books, setBooks]}>
+        <Lead />
+      </BooksContext.Provider>
     </>
   );
 }

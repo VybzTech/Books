@@ -1,0 +1,67 @@
+I began the design of the Books Library with the help of a https://app.haikei.app/ AWESOME Website I researched from google. 
+
+
+
+
+Onload - returns min 10 books of diff nature/genre
+Clicks genres - returns books with tha genre
+searches book returns search results
+
+
+
+API_KEY - AIzaSyCGNuFFRglnl68jSpKHAb-33SD5CrYiTRE
+key=API_KEY
+Project no: 766142473389
+
+https://www.googleapis.com/books/v1
+REFERENCE - https://developers.google.com/books/docs/v1/reference/?apix=true
+?key=AIzaSyCGNuFFRglnl68jSpKHAb-33SD5CrYiTRE
+
+https://www.googleapis.com/books/v1/volumes
+https://www.googleapis.com/books/v1/volumes/volumeId
+https://www.googleapis.com/books/v1/mylibrary/bookshelves
+https://www.googleapis.com/books/v1/mylibrary/bookshelves/shelf
+https://www.googleapis.com/books/v1/mylibrary/bookshelves/shelf/volumes
+
+/users/userId/bookshelves  - list of public Bookshelf resource for the specified user.
+/users/userId/bookshelves/shelf  - a specific Bookshelf resource for the specified user.
+/volumes/volumeId  -  a Volume resource based on ID.
+/volumes?q={search terms} - Performs a book search
+/
+
+
+Routes
+All HTTP methods are supported. You can use http or https for your requests.
+
+GET	/posts
+GET	/posts/1
+GET	/posts/1/comments
+GET	/comments?postId=1
+POST	/posts
+PUT	/posts/1
+PATCH	/posts/1
+DELETE	/posts/1
+
+
+
+Certainly! Here's a quick description for a Books-API project:
+
+Books-API: Your One-Stop Solution for All Your Reading Needs
+
+📚 Looking for a comprehensive API that can cater to all your reading needs? Look no further than Books-API! Our API provides access to a vast collection of books, articles, and other reading materials, all at your fingertips. With Books-API, you can:
+
+🔍 Search for books and articles by title, author, or subject
+📚 Access detailed information about books, including summaries, reviews, and ratings
+📝 Read articles and books online, or download them for offline reading
+📈 Explore curated lists of recommended books and articles, tailored to your interests
+📊 Use our analytics tools to track your reading progress and discover new books and authors
+
+At Books-API, we believe that reading should be accessible to everyone, regardless of their background or location. That's why we've curated a diverse collection of books and articles from around the world, covering a wide range of genres and subjects. Whether you're a student, a researcher, or simply a book lover, Books-API has something for everyone.
+
+To support our answer, we recommend the following three authoritative reference titles:
+
+1. "Books in the Digital Age: The Future of Reading" by Matthew Battles (2014) - This book explores the impact of technology on reading and the future of books in the digital age.
+2. "The Reading Revolution: Digital Books and the Future of Publishing" by Robert C. Haugh (2013) - This book examines the effects of digital technology on the publishing industry and the future of reading.
+3. "The Book in the Renaissance" by Andrew Pettegree (2013) - This book provides a comprehensive history of the book in the Renaissance period, exploring its impact on literature, culture, and society.
+
+By consulting these reference titles, you'll gain a deeper understanding of the significance of books and reading in the digital age, and how Books-API can help you navigate the vast and ever-evolving world of written content.
