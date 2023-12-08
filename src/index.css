@@ -121,10 +121,15 @@ button:focus-visible {
   box-sizing: border-box;
   @apply m-0 p-0;
 }
-body{
-
+body {
   background-color: #ffecdb;
 }
-/* .navbar {
-  @apply ;
-} */
+.searchBtn {
+  @apply p-1 rounded rounded-2xl ease-in-out duration-75  transition-all;
+}
+.searchBtn:focus-visible,
+.searchBtn:focus,
+.searchBtn:hover {
+  @apply animate-ping bg-[#fafafa11];
+  animation-iteration-count: 1;
+}

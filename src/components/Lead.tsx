@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import BookSearch from "./BookSearch";
-import BooksContext from "./BooksContext";
+import BooksContext from "../BooksContext";
 
 const Lead = () => {
   // sm md lg xl 2xl
   const BooksValue = useContext(BooksContext);
   console.log(BooksValue);
   return (
-    <div className="w-fit m-auto mt-32 md:w-32 lg:w-48 text-center text-white">
-      {/*  */}
+    <div className="w-fit m-auto mt-32  text-center text-white">
+      {/* md:w-32 lg:w-48 */}
       <span className="text-2xl capitalize font-serif italic">
         welcome to my
       </span>
-      <h2 className="text-6xl  text-bold font-sans font-extrabold mt-4">
+      <h2 className="text-7xl leading-0.5 text-bold font-sans font-extrabold mt-4">
         Books Library
       </h2>
       {/* <BooksContext.Consumer> */}
