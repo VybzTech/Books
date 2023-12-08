@@ -26,7 +26,7 @@ const BookSearch = () => {
   return (
     <div>
       {/* <h1>Google Books Search</h1> */}
-      <div className="search mt-20 w-[40vw] py-1.5 px-5 rounded rounded-3xl border flex items-center">
+      <div className="search mt-14 w-[40vw] py-1.5 px-5 rounded rounded-3xl border flex items-center shadow transition-all ease-in-out">
         <input
           type="text"
           value={query}

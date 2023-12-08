@@ -7,12 +7,12 @@ const Lead = () => {
   const BooksValue = useContext(BooksContext);
   console.log(BooksValue);
   return (
-    <div className="w-fit m-auto mt-32  text-center text-white">
+    <div className="w-fit m-auto mt-36 text-center text-white">
       {/* md:w-32 lg:w-48 */}
-      <span className="text-2xl capitalize font-serif italic">
+      <span className="text-2xl capitalize font-serif italic opacity-75">
         welcome to my
       </span>
-      <h2 className="text-7xl leading-0.5 text-bold font-sans font-extrabold mt-4">
+      <h2 className="text-8xl leading-0.5 text-bold font-sans font-extrabold mt-4">
         Books Library
       </h2>
       {/* <BooksContext.Consumer> */}

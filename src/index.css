@@ -123,6 +123,14 @@ button:focus-visible {
 }
 body {
   background-color: #ffecdb;
+}.library >span::after{ content:"";
+  @apply absolute right-0 top-0 w-1 h-10 bg-white ;
+}
+.search {
+  border: 2px solid #ccc1;
+}
+.search:hover {
+  border-color: #ccc3;
 }
 .searchBtn {
   @apply p-1 rounded rounded-2xl ease-in-out duration-75  transition-all;
