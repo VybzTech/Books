@@ -3,7 +3,7 @@ import React from "react";
 const BG = () => {
   return (
     // <div className="h-[70vh] w-full">
-    <div className="absolute top-0 left-0 w-full" style={{ zIndex: -1 }}>
+    <div className="absolute top-[-7rem] left-0 w-full" style={{ zIndex: -1 }}>
       <svg
       className="w-full h-[50%]"
       //  h-[50vh]"

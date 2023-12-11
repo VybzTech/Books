@@ -123,9 +123,21 @@ button:focus-visible {
 }
 body {
   background-color: #ffecdb;
-}.library >span::after{ content:"";
-  @apply absolute right-0 top-0 w-1 h-10 bg-white ;
 }
+.library > span {
+  @apply relative block;
+}
+/* .library > span:first-of-type::after {
+  content: "";
+  @apply absolute right-1.5 top-[100%] w-0.5 h-8 bg-zinc-400 opacity-75 rounded mb-4;
+}
+.library > span:not(:first-of-type) {
+  @apply opacity-50 mr-[1rem] mt-[0.8rem];
+}
+.library > span::after {
+  content: "";
+  @apply absolute right-[-8%] top-[50%] w-2.5 h-0.5 bg-zinc-400 opacity-75 rounded;
+} */
 .search {
   border: 2px solid #ccc1;
 }
@@ -140,4 +152,7 @@ body {
 .searchBtn:hover {
   @apply animate-ping bg-[#fafafa11];
   animation-iteration-count: 1;
+}
+.trans {
+  @apply transition-all ease-in-out;
 }

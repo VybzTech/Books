@@ -8,13 +8,13 @@ import Lead from "./components/Lead";
 import BooksContext from "./BooksContext";
 
 function App() {
-  const [books, setBooks] = useState([]);
+  const [Books, setBooks] = useState<object[]>([]);
   return (
     <>
       <Navbar />
       <BG />
 
-      <BooksContext.Provider value={[books, setBooks]}>
+      <BooksContext.Provider value={[Books, setBooks]}>
         <Lead />
       </BooksContext.Provider>
     </>

@@ -1,22 +1,27 @@
 // src/BookSearch.js
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import BooksContext from "../BooksContext";
 // type prop ={set: React.FC}
 // const BookSearch = (setBooks:prop) => {
 const BookSearch = () => {
   const [query, setQuery] = useState("Science-fiction");
-
+  // type BooksProps={};
   //   const contextValue = books;
-
+  type BooksContextProps = { Books: object[]; setBooks: React.Dispatch<React.SetStateAction<object[]>> };
+  const AllBooks: BooksContextProps = useContext(BooksContext);
+  console.log(AllBooks.Books, AllBooks.setBooks);
   const searchBooks = async () => {
     try {
       const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=${query}`
       );
-      console.log(response.data.items || []);
-      //   setBooks(response.data.items || []);
+      // console.log(response.data.items || []);
+      AllBooks.setBooks(response.data.items || []);
+      console.log(AllBooks.Books);
     } catch (error) {
       console.error("Error fetching books:", error);
+      //ADD ERROR MODEL TO PAGE
     }
   };
   useEffect(() => {
@@ -26,7 +31,7 @@ const BookSearch = () => {
   return (
     <div>
       {/* <h1>Google Books Search</h1> */}
-      <div className="search mt-14 w-[40vw] py-1.5 px-5 rounded rounded-3xl border flex items-center shadow transition-all ease-in-out">
+      <div className="search mt-14 w-[40vw] py-1.5 px-5 rounded rounded-3xl border flex items-center trans shadow">
         <input
           type="text"
           value={query}

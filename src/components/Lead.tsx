@@ -1,11 +1,23 @@
 import React, { useContext } from "react";
 import BookSearch from "./BookSearch";
 import BooksContext from "../BooksContext";
+import Book from "./Book";
 
 const Lead = () => {
   // sm md lg xl 2xl
-  const BooksValue = useContext(BooksContext);
-  console.log(BooksValue);
+  // const [Books,setBooks]  = useContext(BooksContext);
+  // const BooksValue = useContext(BooksContext);
+  // console.log(BooksValue);
+  type BookModel = {
+    accessInfo: object;
+    kind: string;
+    etag: string;
+    id: string;
+    saleInfo: object;
+    searchInfo: object;
+    selfLink: string;
+    volumeInfo: object;
+  };
   return (
     <div className="w-fit m-auto mt-36 text-center text-white">
       {/* md:w-32 lg:w-48 */}
@@ -18,6 +30,7 @@ const Lead = () => {
       {/* <BooksContext.Consumer> */}
 
       <BookSearch />
+{/* {Books.map((bookModel:BookModel,id:number)=><Book key={id} book={bookModel} />)} */}
       {/* </BooksContext.Consumer> */}
       {/*       
       <ul>
