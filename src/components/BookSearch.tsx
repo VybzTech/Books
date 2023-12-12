@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import BooksContext from "../BooksContext";
 import BookModel from "../model/BookModel";
-import toast from "react-hot-toast/headless";
+import toast from "react-hot-toast";
 
 type BooksContextProps = {
   Books: BookModel[];
@@ -11,25 +11,22 @@ type BooksContextProps = {
 };
 
 const BookSearch: React.FC = () => {
-
   const [query, setQuery] = useState("Science-fiction");
   const { Books, setBooks } = useContext<BooksContextProps>(BooksContext);
-  
-    const searchBooks = async () => {
-      try {
-        const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes?q=${query}`
-        );
-        setBooks(response.data.items || []);
-      } catch (error) {
-        error?.message === "Network Error" ?
-      
-        toast.error("Network Error. Connect internet !")
-        :
-        toast.error("Could not load Books")
 
-console.error("Error fetching books:", error);
-}
+  const searchBooks = async () => {
+    try {
+      const response = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes?q=${query}`
+      );
+      // toast.loading("Loading");
+      setBooks(response.data.items || []);
+    } catch (error) {
+      console.error("Error fetching books:", error);
+      error?.message === "Network Error"
+        ? toast.error("Network Error. Connect internet !")
+        : toast.error("Could not load Books");
+    }
   };
   useEffect(() => {
     searchBooks();

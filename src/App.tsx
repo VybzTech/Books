@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Lead from "./components/Lead";
 import BooksContext from "./BooksContext";
 import BookModel from "./model/BookModel";
+import { Toaster } from "react-hot-toast";
 
 const App: React.FC = () => {
   // type BooksContextProps = { Books: BookModel[]; setBooks: React.Dispatch<React.SetStateAction<BookModel[]>> };
@@ -21,6 +22,7 @@ const App: React.FC = () => {
       <BooksContext.Provider value={{ Books, setBooks }}>
         <Lead />
       </BooksContext.Provider>
+      <Toaster position="bottom-left" reverseOrder={false} />
     </>
   );
 };

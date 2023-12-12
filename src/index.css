@@ -160,7 +160,12 @@ body {
   @apply transition-all ease-in-out;
 }
 .Bookies {
-  gap: 1.5rem;
+  gap: 1.75rem;
   @apply mt-10 px-8;
   grid-template-columns: repeat(5, 1fr);
+}
+/* .book:hover h2{text-decoration: underline;} */
+.book:hover h2{@apply text-black underline cursor-pointer; }
+.book:hover img {
+  @apply shadow shadow-lg cursor-pointer;
 }

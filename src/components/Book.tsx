@@ -4,25 +4,17 @@ type Bookl = { book: BookModel };
 
 const Book = ({ book }: Bookl) => {
   const {
-    // accessInfo,
-    // kind,
-    // etag,
-    // id,
-    // saleInfo,
     searchInfo,
-    // selfLink,
     volumeInfo,
   } = book;
-// var snip = searchInfo?.textSnippet?.toString();
-//   console.log(snip?.substr(0,100))
 
   return (
-    <div className={`book ${book.id}`}>
+    <div className={`book mb-2 ${book.id}`}>
       {/* <div className="font-serif"> */}
       <div className="font-serif">
-        <img className="w-full rounded rounded-lg object-contain mb-2" src={volumeInfo?.imageLinks?.smallThumbnail} alt={volumeInfo?.title} />
-        <h2 className="font-sans font-bold text-lg text-left">{volumeInfo?.title}</h2>
-        <p>{searchInfo?.textSnippet?.toString().substr(0,75)}...</p>
+        <img className="w-full rounded rounded-lg object-contain mb-2 trans" src={volumeInfo?.imageLinks?.smallThumbnail} alt={volumeInfo?.title} />
+        <h2 className="font-sans font-bold text-lg text-left mb-0.5">{volumeInfo?.title}</h2>
+        <p>{searchInfo?.textSnippet?.toString().substr(0,90)}...</p>
       </div>
     </div>
     /**

@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import BookSearch from "./BookSearch";
 import BooksContext from "../BooksContext";
 import Book from "./Book";
 import BookModel from "../model/BookModel";
-import { Toaster } from "react-hot-toast";
 
 const Lead = () => {
   type BooksContextProps = {
@@ -12,7 +11,8 @@ const Lead = () => {
   };
 
   const { Books, setBooks } = useContext<BooksContextProps>(BooksContext);
-
+  const [book, set] = useState<object>({});
+  console.log(book, set);
   return (
     <div className="w-fit m-auto mt-36 text-center text-white">
       <span className="text-2xl capitalize font-serif italic opacity-75">
@@ -27,7 +27,6 @@ const Lead = () => {
           <Book key={id} book={bookmodel} />
         ))}
       </div>
-      <Toaster position="bottom-left" reverseOrder={false} />
     </div>
   );
 };
