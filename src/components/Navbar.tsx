@@ -12,10 +12,6 @@ const Navbar = () => {
         <span className="active trans bg-[#0a0a0a22] p-1.5 px-3 rounded rounded-md hover:cursor-pointer hover:bg-[#0a0a0a33] hover:shadow">
           {nav}
         </span>
-        {/* <span className="trans bg-[#0a0a0a22] p-1.5 px-3 rounded rounded-md hover:cursor-pointer hover:bg-[#0a0a0a33] hover:shadow">Harry potter</span> */}
-        {/* <ul>
-          <li className="mt-3.5 mr-2 bg-[#0a0a0a11] p-1.5 px-3 rounded rounded-md">Harry potter</li>
-        </ul> */}
       </div>
     </div>
   );

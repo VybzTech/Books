@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import BooksContext from "../BooksContext";
 import BookModel from "../model/BookModel";
+import toast from "react-hot-toast/headless";
 
 type BooksContextProps = {
   Books: BookModel[];
@@ -12,56 +13,23 @@ type BooksContextProps = {
 const BookSearch: React.FC = () => {
 
   const [query, setQuery] = useState("Science-fiction");
-  const { Books, setBooks } = useContext(BooksContext);
-  const searchBooks = async () => {
-    try {
-      const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}`
-      );
-      // console.log(response.data.items || []);
-      setBooks(response.data.items || []);
-    } catch (error) {
-      /**
-       * 
-       * {
-    "message": "Network Error",
-    "name": "AxiosError",
-    "stack": "AxiosError: Network Error\n    at XMLHttpRequest.handleError (http://localhost:5173/node_modules/.vite/deps/axios.js?v=ff2d83e9:1451:14)",
-    "config": {
-        "transitional": {
-            "silentJSONParsing": true,
-            "forcedJSONParsing": true,
-            "clarifyTimeoutError": false
-        },
-        "adapter": [
-            "xhr",
-            "http"
-        ],
-        "transformRequest": [
-            null
-        ],
-        "transformResponse": [
-            null
-        ],
-        "timeout": 0,
-        "xsrfCookieName": "XSRF-TOKEN",
-        "xsrfHeaderName": "X-XSRF-TOKEN",
-        "maxContentLength": -1,
-        "maxBodyLength": -1,
-        "env": {},
-        "headers": {
-            "Accept": "application/json, text/plain, 
-        },
-        "method": "get",
-        "url": "https://www.googleapis.com/books/v1/volumes?q=Science-fiction"
-    },
-    "code": "ERR_NETWORK",
-    "status": null
+  const { Books, setBooks } = useContext<BooksContextProps>(BooksContext);
+  
+    const searchBooks = async () => {
+      try {
+        const response = await axios.get(
+          `https://www.googleapis.com/books/v1/volumes?q=${query}`
+        );
+        setBooks(response.data.items || []);
+      } catch (error) {
+        error?.message === "Network Error" ?
+      
+        toast.error("Network Error. Connect internet !")
+        :
+        toast.error("Could not load Books")
+
+console.error("Error fetching books:", error);
 }
-       */
-      console.error("Error fetching books:", error);
-      //ADD ERROR MODEL TO PAGE
-    }
   };
   useEffect(() => {
     searchBooks();
@@ -69,8 +37,7 @@ const BookSearch: React.FC = () => {
 
   return (
     <div>
-      {/* <h1>Google Books Search</h1> */}
-      <div className="search mt-14 w-[40vw] py-1.5 px-5 rounded rounded-3xl border flex items-center trans shadow">
+      <div className="search mt-10 mx-auto max-w-[40vw] py-1.5 px-5 rounded rounded-3xl border flex items-center trans shadow">
         <input
           type="text"
           value={query}
@@ -82,8 +49,6 @@ const BookSearch: React.FC = () => {
           <svg
             className="w-6 h-6 hover:fill-[#fafafa77] hover:cursor-pointer focus:text-white"
             xmlns="http://www.w3.org/2000/svg"
-            // height="18px"
-            // width="18px"
             viewBox="0 0 24 24"
             fill="#fafafa33"
           >

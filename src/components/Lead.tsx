@@ -3,27 +3,18 @@ import BookSearch from "./BookSearch";
 import BooksContext from "../BooksContext";
 import Book from "./Book";
 import BookModel from "../model/BookModel";
+import { Toaster } from "react-hot-toast";
 
 const Lead = () => {
-  // sm md lg xl 2xl
-  // const [Books,setBooks]  = useContext(BooksContext);
-  // const BooksValue = useContext(BooksContext);
-  // console.log(BooksValue);
-  // type BookModel = {
-  //   accessInfo: object;
-  //   kind: string;
-  //   etag: string;
-  //   id: string;
-  //   saleInfo: object;
-  //   searchInfo: object;
-  //   selfLink: string;
-  //   volumeInfo: object;
-  // };
-  const { Books, setBooks } = useContext(BooksContext);
-  // console.log(Books,setBooks);
+  type BooksContextProps = {
+    Books: BookModel[];
+    setBooks: React.Dispatch<React.SetStateAction<BookModel[]>>;
+  };
+
+  const { Books, setBooks } = useContext<BooksContextProps>(BooksContext);
+
   return (
     <div className="w-fit m-auto mt-36 text-center text-white">
-      {/* md:w-32 lg:w-48 */}
       <span className="text-2xl capitalize font-serif italic opacity-75">
         welcome to my
       </span>
@@ -31,11 +22,12 @@ const Lead = () => {
         Books Library
       </h2>
       <BookSearch />
-
-      {Books.map((bookmodel: BookModel, id: number) => (
-        <Book key={id} book={bookmodel} />
-      ))}
-      {/* } */}
+      <div className="Bookies grid items-left justify-left text-stone-600 bold text-left mt-5">
+        {Books?.map((bookmodel: BookModel, id: number) => (
+          <Book key={id} book={bookmodel} />
+        ))}
+      </div>
+      <Toaster position="bottom-left" reverseOrder={false} />
     </div>
   );
 };
