@@ -6,19 +6,23 @@ import BG from "./components/BG";
 import Navbar from "./components/Navbar";
 import Lead from "./components/Lead";
 import BooksContext from "./BooksContext";
+import BookModel from "./model/BookModel";
 
-function App() {
-  const [Books, setBooks] = useState<object[]>([]);
+const App: React.FC = () => {
+  // type BooksContextProps = { Books: BookModel[]; setBooks: React.Dispatch<React.SetStateAction<BookModel[]>> };
+  // const const BooksContext = createContext<BooksContextProps | undefined>(undefined);
+
+  const [Books, setBooks] = useState<BookModel[]>([]);
+
   return (
     <>
       <Navbar />
       <BG />
-
-      <BooksContext.Provider value={[Books, setBooks]}>
+      <BooksContext.Provider value={{ Books, setBooks }}>
         <Lead />
       </BooksContext.Provider>
     </>
   );
-}
+};
 
 export default App;

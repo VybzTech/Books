@@ -2,24 +2,63 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import BooksContext from "../BooksContext";
-// type prop ={set: React.FC}
-// const BookSearch = (setBooks:prop) => {
-const BookSearch = () => {
+import BookModel from "../model/BookModel";
+
+type BooksContextProps = {
+  Books: BookModel[];
+  setBooks: React.Dispatch<React.SetStateAction<BookModel[]>>;
+};
+
+const BookSearch: React.FC = () => {
+
   const [query, setQuery] = useState("Science-fiction");
-  // type BooksProps={};
-  //   const contextValue = books;
-  type BooksContextProps = { Books: object[]; setBooks: React.Dispatch<React.SetStateAction<object[]>> };
-  const AllBooks: BooksContextProps = useContext(BooksContext);
-  console.log(AllBooks.Books, AllBooks.setBooks);
+  const { Books, setBooks } = useContext(BooksContext);
   const searchBooks = async () => {
     try {
       const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=${query}`
       );
       // console.log(response.data.items || []);
-      AllBooks.setBooks(response.data.items || []);
-      console.log(AllBooks.Books);
+      setBooks(response.data.items || []);
     } catch (error) {
+      /**
+       * 
+       * {
+    "message": "Network Error",
+    "name": "AxiosError",
+    "stack": "AxiosError: Network Error\n    at XMLHttpRequest.handleError (http://localhost:5173/node_modules/.vite/deps/axios.js?v=ff2d83e9:1451:14)",
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "adapter": [
+            "xhr",
+            "http"
+        ],
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+            "Accept": "application/json, text/plain, 
+        },
+        "method": "get",
+        "url": "https://www.googleapis.com/books/v1/volumes?q=Science-fiction"
+    },
+    "code": "ERR_NETWORK",
+    "status": null
+}
+       */
       console.error("Error fetching books:", error);
       //ADD ERROR MODEL TO PAGE
     }

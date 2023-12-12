@@ -3,7 +3,6 @@ import Logo from "/Vybz Logo.png";
 
 const Navbar = () => {
   const [nav, setNav] = useState("Books Library");
-  console.log(setNav);
   return (
     <div className="navbar absolute top-0 left-0 w-full py-5 px-10 flex items-start justify-between">
       <div className="logo w-10">
