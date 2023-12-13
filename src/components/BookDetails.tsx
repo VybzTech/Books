@@ -22,7 +22,7 @@ const BookDetails: React.FC = () => {
     return <div>Book not found.</div>;
   }
 
-  const { searchInfo, volumeInfo } = selectedBook;
+  const { volumeInfo } = selectedBook;
 
   return (
     <div className={`bookdetail mr-24 mx-8 my-14 ${id}`}>
@@ -42,23 +42,30 @@ const BookDetails: React.FC = () => {
           <h2 className="font-sans font-bold text-4xl text-left">
             {volumeInfo?.title}
           </h2>
-          <span className="flex gap-3 mb-3.5 text-stone-500">
+          <span className="flex gap-3 mb-3.5 text-stone-500 relative">
             <p className="">{volumeInfo?.subtitle}</p>
-            <Link className="text-stone-500 hover:text-stone-700 trans" to={volumeInfo?.previewLink}>
+            <Link
+              className="text-stone-500 hover:text-stone-700 trans group hover:[&>span]:scale-100"
+              to={volumeInfo?.previewLink}
+            >
               <LinkSvg />
+            <span className="absolute bottom-0 right-52 scale-0 transition-all rounded bg-stone-700 p-2 text-xs text-white group-hover:scale-100">
+              Continue reading on Google✨
+            </span>
             </Link>
           </span>
           <p className="mb-5 text-2xl text-slate-800">
             {volumeInfo?.description}
-          </p>
-          {/* <p>{searchInfo?.textSnippet}</p> */}
+          </p>{" "}
           <p className="text-stone-500">
             <span>Authors: </span>
             {volumeInfo?.authors?.map((auth) => auth + ", ")}
-          </p>
-          {/* <p>{volumeInfo?.authors}</p> */}
+          </p>{" "}
         </div>
       </div>
+      {/* 
+      
+ */}
     </div>
   );
 };

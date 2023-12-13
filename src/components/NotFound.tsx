@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
-    <div>NotFound</div>
-  )
-}
+    <div className="m-auto mt-40 w-fit font-bold font-mono text-4xl">
+      Sorry, Nothing was Found Here ❗
+    </div>
+  );
+};
 
-export default NotFound
+export default NotFound;
