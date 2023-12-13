@@ -1,68 +1,31 @@
-import React from "react";
 import BookModel from "../model/BookModel";
+import { Link } from "react-router-dom";
 type Bookl = { book: BookModel };
 
 const Book = ({ book }: Bookl) => {
-  const {
-    searchInfo,
-    volumeInfo,
-  } = book;
+  const { id, searchInfo, volumeInfo } = book;
 
   return (
-    <div className={`book mb-2 ${book.id}`}>
-      {/* <div className="font-serif"> */}
+    <div className={`book mb-2 ${id}`}>
       <div className="font-serif">
-        <img className="w-full rounded rounded-lg object-contain mb-2 trans" src={volumeInfo?.imageLinks?.smallThumbnail} alt={volumeInfo?.title} />
-        <h2 className="font-sans font-bold text-lg text-left mb-0.5">{volumeInfo?.title}</h2>
-        <p>{searchInfo?.textSnippet?.toString().substr(0,90)}...</p>
+        <Link to={`/book/${id}`}>
+          <img
+            className="w-full rounded rounded-lg object-contain mb-2 trans"
+            src={volumeInfo?.imageLinks?.smallThumbnail}
+            alt={volumeInfo?.title}
+          />
+          <h2 className="font-sans font-bold text-lg text-left mb-0.5">
+            {volumeInfo?.title}
+          </h2>
+        </Link>
+        <p>
+          {searchInfo?.textSnippet === ""
+            ? volumeInfo?.subtitle
+            : searchInfo?.textSnippet?.toString().substr(0, 90)}
+          ...
+        </p>
       </div>
     </div>
-    /**
-     * {
-    "title": "Alternate Worlds",
-    "subtitle": "The Illustrated History of Science Fiction, 3d ed.",
-    "authors": [
-        "James Gunn"
-    ],
-    "publisher": "McFarland",
-    "publishedDate": "2018-08-10",
-    "description": "Alternate Worlds was first published in 1975 and became an instant classic, winning a Hugo award. This third edition brings the history of science fiction up to date, covering developments over the past forty years--a period that has seen the advent of technologies only imagined in the genre's Golden Age. As a literature of change, science fiction has become ever more meaningful, presaging dangers to humanity and, as Alvin Toffler wrote, guarding against \"the premature arrival of the future.\" The world has begun to recognize science fiction in many different ways, incorporating its elements in products, visual media and huge conventions.",
-    "industryIdentifiers": [
-        {
-            "type": "ISBN_13",
-            "identifier": "9781476673530"
-        },
-        {
-            "type": "ISBN_10",
-            "identifier": "1476673535"
-        }
-    ],
-    "readingModes": {
-        "text": false,
-        "image": true
-    },
-    "pageCount": 337,
-    "printType": "BOOK",
-    "categories": [
-        "Literary Criticism"
-    ],
-    "maturityRating": "NOT_MATURE",
-    "allowAnonLogging": false,
-    "contentVersion": "0.1.2.0.preview.1",
-    "panelizationSummary": {
-        "containsEpubBubbles": false,
-        "containsImageBubbles": false
-    },
-    "imageLinks": {
-        "smallThumbnail": "http://books.google.com/books/content?id=GE1nDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-        "thumbnail": "http://books.google.com/books/content?id=GE1nDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-    },
-    "language": "en",
-    "previewLink": "http://books.google.com/books?id=GE1nDwAAQBAJ&printsec=frontcover&dq=Science-fiction&hl=&cd=10&source=gbs_api",
-    "infoLink": "http://books.google.com/books?id=GE1nDwAAQBAJ&dq=Science-fiction&hl=&source=gbs_api",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Alternate_Worlds.html?hl=&id=GE1nDwAAQBAJ"
-}
-     */
   );
 };
 

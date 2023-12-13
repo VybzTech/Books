@@ -1,12 +1,31 @@
+type VolumeProps = {
+  title: string;
+  subtitle: string;
+  authors: string[];
+  publisher: string;
+  publishedDate: string;
+  description: string;
+  pageCount: number;
+  categories: string[];
+  maturityRating: string;
+  allowAnonLogging: boolean;
+  imageLinks: {
+    smallThumbnail: string;
+    thumbnail: string;
+  };
+  previewLink: string;
+  infoLink: string;
+};
+
 type BookModel = {
   accessInfo: object;
   kind: string;
   etag: string;
   id: string;
   saleInfo: object;
-  searchInfo: object;
+  searchInfo: { textSnippet: string };
   selfLink: string;
-  volumeInfo: object;
+  volumeInfo: VolumeProps;
 };
-// type BooksContextProps = { Books: BookModel[]; setBooks: React.Dispatch<React.SetStateAction<BookModel[]>> };
+
 export default BookModel;

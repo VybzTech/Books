@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import BookSearch from "./BookSearch";
-import BooksContext from "../BooksContext";
+import {BooksContext} from "../BooksContext";
 import Book from "./Book";
 import BookModel from "../model/BookModel";
 
@@ -10,9 +10,7 @@ const Lead = () => {
     setBooks: React.Dispatch<React.SetStateAction<BookModel[]>>;
   };
 
-  const { Books, setBooks } = useContext<BooksContextProps>(BooksContext);
-  const [book, set] = useState<object>({});
-  console.log(book, set);
+  const { Books } = useContext<BooksContextProps>(BooksContext);
   return (
     <div className="w-fit m-auto mt-36 text-center text-white">
       <span className="text-2xl capitalize font-serif italic opacity-75">

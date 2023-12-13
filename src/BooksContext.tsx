@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import React, { createContext, useState } from "react";
 import BookModel from "./model/BookModel";
 
 type BooksContextProps = {
@@ -6,4 +6,15 @@ type BooksContextProps = {
   setBooks: React.Dispatch<React.SetStateAction<BookModel[]>>;
 };
 const BooksContext = createContext<BooksContextProps | undefined>(undefined);
-export default BooksContext;
+
+const BooksProvider: React.FC = ({ children }) => {
+  const [Books, setBooks] = useState<BookModel[]>([]);
+
+  return (
+    <BooksContext.Provider value={{ Books, setBooks }}>
+      {children}
+    </BooksContext.Provider>
+  );
+};
+
+export { BooksContext, BooksProvider };

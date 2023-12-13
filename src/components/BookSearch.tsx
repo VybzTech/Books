@@ -1,7 +1,7 @@
 // src/BookSearch.js
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import BooksContext from "../BooksContext";
+import { BooksContext } from "../BooksContext";
 import BookModel from "../model/BookModel";
 import toast from "react-hot-toast";
 
@@ -9,6 +9,7 @@ type BooksContextProps = {
   Books: BookModel[];
   setBooks: React.Dispatch<React.SetStateAction<BookModel[]>>;
 };
+// type ErrorType = { message: string ;unknown};
 
 const BookSearch: React.FC = () => {
   const [query, setQuery] = useState("Science-fiction");
@@ -16,12 +17,14 @@ const BookSearch: React.FC = () => {
 
   const searchBooks = async () => {
     try {
+      toast.loading("Loading", { id: "loader" });
       const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=${query}`
       );
-      // toast.loading("Loading");
       setBooks(response.data.items || []);
-    } catch (error) {
+      console.log(Books);
+      toast.dismiss("loader");
+    } catch (error: unknown) {
       console.error("Error fetching books:", error);
       error?.message === "Network Error"
         ? toast.error("Network Error. Connect internet !")
